@@ -5,7 +5,7 @@ metadata:
   labels:
     name: myfirstpipeline
   annotations:
-    pipeline.alpha.openshift.io/uses: '[{"name": "django-ex", "namespace": "icds", "kind": "DeploymentConfig"}]'
+    pipeline.alpha.openshift.io/uses: '[{"name": "icds", "namespace": "vmworld2019", "kind": "DeploymentConfig"}]'
 spec:
   triggers:
     -
@@ -22,7 +22,7 @@ spec:
   strategy:
     type: JenkinsPipeline
     jenkinsPipelineStrategy:
-      jenkinsfile: "node() {\nstage 'build'\nopenshiftBuild(buildConfig: 'django-ex', showBuildLogs: 'true')\nstage 'deploy'\nopenshiftDeploy(deploymentConfig: 'django-ex')\nopenshiftScale(deploymentConfig: 'django-ex',replicaCount: '1')\n}"
+      jenkinsfile: "node() {\nstage 'build'\nopenshiftBuild(buildConfig: 'icds', showBuildLogs: 'true')\nstage 'deploy'\nopenshiftDeploy(deploymentConfig: 'icds')\nopenshiftScale(deploymentConfig: 'icds',replicaCount: '1')\n}"
   output:
   resources:
   postCommit:
